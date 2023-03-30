@@ -39,14 +39,12 @@ app.use(ExpressMongoSanitize());
 
 //Middlewares Built-in
 app.use(express.json());
-app.use(morgan("tiny"));
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.static("./public"));
 app.use(fileUpload());
 
 //Routes
-app.get("/", (req, res) => res.json("Hello man"));
-app.get("/api/v1", (req, res) => console.log(req.signedCookies));
+
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/products", productRoutes);
